@@ -9,5 +9,19 @@
     "devDependencies": {
         "browserify": "^17.0.0",
         "typescript": "^5.0.4"
-    }
+    },
+    "name": "tiangong-chat",
+    "description": "> 基于天工内测 API 的客户端",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oyps/tiangong-chat.git"
+    },
+    "author": "欧阳鹏",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/oyps/tiangong-chat/issues"
+    },
+    "homepage": "https://github.com/oyps/tiangong-chat#readme"
 }
