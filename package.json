@@ -3,7 +3,8 @@
         "apee-router": "^1.1.17"
     },
     "scripts": {
-        "build": "tsc && browserify js/index.js -o dist/bundle.js && go run serve/main.go"
+        "build": "tsc && browserify static/js/index.js -o static/dist/bundle.js && cd serve && go run .",
+        "serve": "cd serve && go run ."
     },
     "devDependencies": {
         "browserify": "^17.0.0",
