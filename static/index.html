@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap/5.2.3/css/bootstrap.min.css">
+    <title>天工</title>
+    <style>
+        [data-route] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container px-4 py-5">
+        <div data-route="home">
+
+        </div>
+        <div data-route="login" style="max-width: 400px;" class="mx-auto">
+            <div class="fs-3 fw-bold mb-4 text-center">登录账号</div>
+            <div class="form-floating mb-3">
+                <input type="tel" class="form-control input-phone" placeholder="手机号">
+                <label>手机号</label>
+            </div>
+            <div class="form-floating mb-4">
+                <input type="password" class="form-control input-password" placeholder="密码">
+                <label>密码</label>
+            </div>
+            <button class="btn btn-success btn-lg w-100 login">登录</button>
+        </div>
+    </div>
+
+    <script src="static/dist/bundle.js"></script>
+</body>
+
+</html>
