@@ -1,6 +1,5 @@
 import { Router } from 'apee-router'
-import { checkLoginInfo } from './util'
-import { login } from './route/login'
+import { checkLoginInfo, login } from './route/login'
 
 const router = new Router()
 router.set(['home', 'login'])

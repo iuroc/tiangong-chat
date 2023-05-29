@@ -1,6 +1,8 @@
 import { RouteEvent } from 'apee-router'
 import { apiConfig } from '../config'
 import { HttpResponse } from '../util'
+
+/** `hash = '#/login'` */
 export const login: RouteEvent = (route, router) => {
     if (route.status == 1) return
     /** 按钮：点击登录 */
@@ -34,4 +36,12 @@ export const login: RouteEvent = (route, router) => {
             }
         })
     })
+}
+
+/** 登录校验 */
+export function checkLoginInfo() {
+    // 判断 token 和 invite-token 是否存在
+    let token = localStorage.getItem('token')
+    let inviteToken = localStorage.getItem('invite-token')
+    if (!token) return location.hash = '/login'
 }
