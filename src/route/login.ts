@@ -48,4 +48,5 @@ export function checkLoginInfo(event?: HashChangeEvent) {
     let token = localStorage.getItem('token')
     let inviteToken = localStorage.getItem('invite-token')
     if (!token && router.getNowRouteName() != 'login') return location.hash = '/login'
+    if (token && router.getNowRouteName() == 'login') location.hash = ''
 }
