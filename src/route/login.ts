@@ -1,10 +1,12 @@
 import { RouteEvent } from 'apee-router'
 import { apiConfig } from '../config'
 import { HttpResponse } from '../util'
+import { router } from '..'
 
 /** `hash = '#/login'` */
-export const login: RouteEvent = (route, router) => {
+export const login: RouteEvent = (route) => {
     if (route.status == 1) return
+    route.status = 1
     /** 按钮：点击登录 */
     const loginBtn = route.dom.querySelector('.login') as HTMLButtonElement
     /** 输入框：手机号 */
@@ -38,10 +40,12 @@ export const login: RouteEvent = (route, router) => {
     })
 }
 
-/** 登录校验 */
-export function checkLoginInfo() {
+/** 在每次页面切换时，进行登录校验 */
+export function checkLoginInfo(event?: HashChangeEvent) {
+    if (typeof event == 'undefined')
+        window.addEventListener('hashchange', checkLoginInfo)
     // 判断 token 和 invite-token 是否存在
     let token = localStorage.getItem('token')
     let inviteToken = localStorage.getItem('invite-token')
-    if (!token) return location.hash = '/login'
+    if (!token && router.getNowRouteName() != 'login') return location.hash = '/login'
 }

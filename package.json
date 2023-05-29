@@ -1,6 +1,6 @@
 {
     "dependencies": {
-        "apee-router": "^1.1.17"
+        "apee-router": "^1.1.18"
     },
     "scripts": {
         "build": "tsc && browserify static/js/index.js -o static/dist/bundle.js && cd serve && go run .",
