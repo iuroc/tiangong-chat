@@ -5,3 +5,10 @@ export function checkLoginInfo() {
     let inviteToken = localStorage.getItem('invite-token')
     if (!token) return location.hash = '/login'
 }
+
+/** HTTP 响应 */
+export type HttpResponse = {
+    code: number,
+    msg: string,
+    data: any
+}

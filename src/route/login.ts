@@ -1,6 +1,6 @@
 import { RouteEvent } from 'apee-router'
 import { apiConfig } from '../config'
-
+import { HttpResponse } from '../util'
 export const login: RouteEvent = (route, router) => {
     if (route.status == 1) return
     /** 按钮：点击登录 */
@@ -21,5 +21,17 @@ export const login: RouteEvent = (route, router) => {
         postParam.set('password', password)
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
         xhr.send(postParam.toString())
+        xhr.addEventListener('readystatechange', () => {
+            if (xhr.status == 200 && xhr.readyState == xhr.DONE) {
+                const res: HttpResponse = JSON.parse(xhr.responseText)
+                if (res.code == 200) {
+                    let token = res.data as string
+                    localStorage.setItem('token', token)
+                    location.hash = ''
+                    return
+                }
+                alert(res.msg)
+            }
+        })
     })
 }

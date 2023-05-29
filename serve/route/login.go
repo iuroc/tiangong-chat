@@ -37,6 +37,7 @@ func LoginRoute(w http.ResponseWriter, r *http.Request, httpClient *http.Client)
 	}, httpClient)
 	type Response struct {
 		Code int               `json:"code"`
+		Msg  string            `json:"code_msg"`
 		Data map[string]string `json:"resp_data"`
 	}
 	var response Response
@@ -46,6 +47,6 @@ func LoginRoute(w http.ResponseWriter, r *http.Request, httpClient *http.Client)
 	if code == 200 {
 		w.Write(util.MakeSuc("登录成功", token))
 	} else {
-		w.Write(util.MakeErr("登录失败"))
+		w.Write(util.MakeErr("登录失败：" + response.Msg))
 	}
 }
