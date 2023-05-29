@@ -1,4 +1,5 @@
 import { RouteEvent } from 'apee-router'
+import { apiConfig } from '../config'
 
 export const login: RouteEvent = (route, router) => {
     if (route.status == 1) return
@@ -11,11 +12,14 @@ export const login: RouteEvent = (route, router) => {
     loginBtn.addEventListener('click', () => {
         let phone = phoneInput.value
         let password = passwordInput.value
-        if (phone.match(/^\s+$/) || password.match(/^\s+$/))
+        if (phone.match(/^\s*$/) || password.match(/^\s*$/))
             return alert('输入不能为空')
         const xhr = new XMLHttpRequest()
-        xhr.open('POST', 'https://neice.tiangong.cn/api/v1/user/login')
-        const data = { data: { phone, passwd: password } }
-        xhr.send(JSON.stringify(data))
+        xhr.open('POST', apiConfig.login)
+        const postParam = new URLSearchParams()
+        postParam.set('phone', phone)
+        postParam.set('password', password)
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.send(postParam.toString())
     })
 }
