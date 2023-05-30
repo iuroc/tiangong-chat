@@ -47,6 +47,9 @@ export function checkLoginInfo(event?: HashChangeEvent) {
     // 判断 token 和 invite-token 是否存在
     let token = localStorage.getItem('token')
     let inviteToken = localStorage.getItem('invite-token')
-    if (!token && router.getNowRouteName() != 'login') return location.hash = '/login'
-    if (token && router.getNowRouteName() == 'login') location.hash = ''
+    let nowRouteName = router.getNowRouteName()
+    if (!token && nowRouteName != 'login')
+        return location.hash = '/login'
+    if (token && nowRouteName == 'login')
+        location.hash = ''
 }

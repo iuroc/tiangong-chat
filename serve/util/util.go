@@ -62,17 +62,13 @@ func Ajax(ajaxOption AjaxOption, client *http.Client) (string, error) {
 }
 
 type ResOption struct {
-	Code int
-	Msg  string
-	Data interface{}
+    Code int         `json:"code"`
+    Msg  string      `json:"msg"`
+    Data interface{} `json:"data"`
 }
 
 func MakeRes(code int, msg string, data interface{}) (string, error) {
-	jsonBytes, _ := json.Marshal(struct {
-		Code int         `json:"code"`
-		Msg  string      `json:"msg"`
-		Data interface{} `json:"data"`
-	}{
+	jsonBytes, _ := json.Marshal(ResOption{
 		Code: code,
 		Msg:  msg,
 		Data: data,
